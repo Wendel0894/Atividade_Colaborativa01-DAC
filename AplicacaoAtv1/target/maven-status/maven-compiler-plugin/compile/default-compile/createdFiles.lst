@@ -1,0 +1,10 @@
+br/edu/ifpb/aplicacaoatv1/resources/JavaEE8Resource.class
+br/edu/ifpb/infra/jsf/converter/Conversor.class
+br/edu/ifpb/domain/CPF.class
+br/edu/ifpb/domain/persintency/memory/IntegrantesEmJDBC.class
+br/edu/ifpb/domain/Integrante.class
+br/edu/ifpb/domain/Bandas.class
+br/edu/ifpb/domain/Integrantes.class
+br/edu/ifpb/aplicacaoatv1/JAXRSConfiguration.class
+br/edu/ifpb/domain/Banda.class
+br/edu/ifpb/infra/jsf/validator/Validador.class
