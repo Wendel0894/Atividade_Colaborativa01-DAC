@@ -19,6 +19,6 @@ public interface Integrantes extends Serializable {
     
     public void remover(Integrante integrante);
     
-    public Integrante recuperarIntegrantePorID(int id);
+    public Integrante recuperarIntegrantePorCpf(String cpf);
     
 }

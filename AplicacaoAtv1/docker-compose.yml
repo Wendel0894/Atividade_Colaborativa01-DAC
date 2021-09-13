@@ -1,0 +1,18 @@
+version: '3'
+services:
+    banco:
+        container_name: banco
+        image: wendel/banco:aplicacao
+        build: ./postgres
+        ports: 
+        - "5432:5432"
+    app:
+        container_name: aplicacao
+        image: wendel/app:atividade1
+        build: .
+        ports:
+        - "8080:8080"
+        depends_on:
+        - "banco"
+        links:
+        - "banco:host-banco"

@@ -1,16 +1,60 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      template="../template.xhtml">
+  
+    
+    <ui:define name="center">
+        
+        
+        <h:form>
+        
+            <h1 class="header center orange-text">Lista de Integrantes: </h1>
+            
+            <h:dataTable value="#{controladorDeIntegrantes.listar()}" var="integrante" class="striped highlight">
+            
+                <h:column>
+                    <f:facet name="header">Id</f:facet>
+                    #{integrante.id}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Nome</f:facet>
+                    #{integrante.nome}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">Data de Nascimento</f:facet>
+                    #{integrante.dataDeNascimento}
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">CPF</f:facet>
+                    #{integrante.cpf.numero}
+                </h:column>
+                
+                <h:column>
+                    <h:commandButton value="editar" action="#{controladorDeIntegrantes.editar(integrante)}" class="btn" />
+                </h:column>
+                
+                <h:column>
+                    <h:commandButton value="excluir" action="#{controladorDeIntegrantes.excluir(integrante)}" class="btn"/>
+                </h:column>
+            
+            
+            </h:dataTable>          
+            
+            <h:commandLink value="Voltar para a pagina de inserção" action="/Integrantes/edit?faces-redirect=true"/>
+            
+        </h:form>
+        
+        
+    </ui:define>
+    
+        
+        
+    
+</ui:composition>

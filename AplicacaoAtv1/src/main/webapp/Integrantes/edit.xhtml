@@ -1,16 +1,37 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>TODO supply a title</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    </head>
-    <body>
-        <div>TODO write content</div>
-    </body>
-</html>
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="../template.xhtml">
+
+    <ui:define name="center">
+        
+        <h:form>
+            
+            
+            <h:outputLabel for="nomeIntegrante" value="Nome:" />
+            <h:inputText id="nomeIntegrante" value="#{controladorDeIntegrantes.integrante.nome}"/>
+            <h:outputLabel for="dataNascimentoIntegrante" value="Data De Nascimento: "/>
+            <h:inputText 
+                id="dataNascimentoIntegrante" 
+                value="#{controladorDeIntegrantes.integrante.dataDeNascimento}"
+                converter="converter.data"
+                />
+            <h:outputLabel for="cpfIntegrante" value="CPF: "/>
+            <h:inputText 
+                id="cpfIntegrante" 
+                value="#{controladorDeIntegrantes.integrante.cpf}"
+                converter="converter.cpf"
+                validator="validator.cpf"
+                />
+            <h:commandButton value="Salvar" action="#{controladorDeIntegrantes.adicionar()}" class="btn"/>
+            <br /><br />
+            <h:message for="cpfIntegrante" class="red-text"/>
+            
+        </h:form>    
+        
+    </ui:define>
+        
+    
+</ui:composition>

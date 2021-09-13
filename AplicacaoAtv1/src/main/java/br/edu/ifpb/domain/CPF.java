@@ -30,6 +30,10 @@ public class CPF {
         this.numero = numero;
     }
     
+    public boolean ehValido(){
+        return this.numero.length() == TAMANHO;
+    }
+    
     
     
     
