@@ -1,3 +1,2 @@
 FROM payara/server-web
-COPY /target/app.war $DEPLOY_DIR
-
+COPY app.war $DEPLOY_DIR

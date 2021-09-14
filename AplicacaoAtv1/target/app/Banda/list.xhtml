@@ -9,11 +9,11 @@
     <ui:define name="center">
         
         <h1 class="header center orange-text">Lista de Bandas: </h1>
-        
+       
          <h:form>
             
             <h:dataTable value="#{controladorDeBandas.listar()}" var="banda" class="striped highlight">
-                
+                        
                 <h:column>
                     <f:facet name="header">Id</f:facet>
                     #{banda.id}
@@ -30,11 +30,6 @@
                 </h:column>
                 
                 <h:column>
-                    <f:facet name="header">Integrante</f:facet>
-                    #{banda.nomeIntegrante}
-                </h:column>
-                
-                <h:column>
                     <h:commandButton value="Editar" action="#{controladorDeBandas.editar(banda)}" class="btn" />
                 </h:column>
                 
@@ -43,6 +38,10 @@
                 </h:column>
                 
             </h:dataTable>
+             
+             <br /> <br />
+             
+             <h:commandLink value="Voltar para para a pagina de inserção" action="/Banda/edit?faces-redirect=true" />
             
         </h:form>
 

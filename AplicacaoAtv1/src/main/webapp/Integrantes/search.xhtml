@@ -13,14 +13,14 @@
         
         <h:form>
             
-            <h:outputLabel value="Digite aqui Integrante" for="buscarIntegrante"/>
+            <h:outputLabel value="Digite aqui o cpf do integrante :" for="buscarIntegrante"/>
             <h:inputText 
                 value="#{controladorDeIntegrantes.integrante.cpf}"
                 converter="converter.cpf"
                 />
             <h:commandButton value="Buscar" action="#{controladorDeIntegrantes.buscar()}" class="btn" />
             <br /> <br />
-            <h:outputText value="#{controladorDeIntegrantes.integranteEcontrado}" />
+            <h:outputText value="#{controladorDeIntegrantes.integranteEcontrado}" class="orange-text"/>
               
             <br /><br />              
         </h:form>

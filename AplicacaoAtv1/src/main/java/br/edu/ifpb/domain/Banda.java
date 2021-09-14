@@ -9,7 +9,6 @@ public class Banda {
     private String localDeOrigem;
     private String nomeFantasia;
     private List<Integrante> integrantes;
-    private String nomeIntegrante = "";
 
     public Banda(String localDeOrigem, String nomeFantasia, List<Integrante> integrantes) {
         this.localDeOrigem = localDeOrigem;
@@ -56,14 +55,6 @@ public class Banda {
         this.integrantes = integrantes;
     }
 
-    public String getNomeIntegrante() {
-        this.setNomeIntegrante();
-        return nomeIntegrante;
-    }
-
-    public void setNomeIntegrante() {
-        this.nomeIntegrante = this.integrantes.get(0).getNome();
-    }
     
    
   

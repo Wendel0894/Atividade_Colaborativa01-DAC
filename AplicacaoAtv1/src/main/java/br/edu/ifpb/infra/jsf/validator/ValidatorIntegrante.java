@@ -17,13 +17,10 @@ public class ValidatorIntegrante implements Validator {
         
         Integrante integrante = (Integrante) t;
         
-        System.out.println("t: " + t);
-        System.out.println("Integrante: " + integrante);
-        
         if (integrante.getCpf().ehValido()) return;
         
         throw new ValidatorException(
-                new FacesMessage("Desculpe, o valor do CPF do integrante é invalido.")
+                new FacesMessage("Desculpe, mas o integrante é invalido.")
         );
         
     }

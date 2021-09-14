@@ -6,6 +6,7 @@ import br.edu.ifpb.domain.Integrante;
 import br.edu.ifpb.domain.Integrantes;
 import br.edu.ifpb.domain.persistency.memory.IntegrantesEmJDBC;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -15,17 +16,33 @@ import javax.faces.convert.FacesConverter;
 @FacesConverter(value="converter.integrante", forClass=Integrante.class)
 public class ConverterIntegrante implements Converter {
     
-    //Converter string em objeto
+    private Integrantes integrantes;
+    
+    public ConverterIntegrante() throws SQLException {
+        this.integrantes = new IntegrantesEmJDBC();
+    }
     
     @Override
     public Object getAsObject(FacesContext fc, UIComponent uic, String string) {
         
-        if (string == null) return null;
+        if (string == null) {
+            
+            return null;
+            
+        } else {
+            
+            Integrante integrante = this.integrantes.recuperarIntegrantePorCpf(string);
+            
+            if ( integrante.getNome().equals("") ) {
+                
+                return null;
+            
+            } 
+
+            return integrante;
+            
+        }
         
-        Integrante integrante = new Integrante(new CPF(string));
-        System.out.println("CPF: " + integrante.getCpf().getNumero());
-        return integrante;
-     
     }
 
     //Converte objeto em string
@@ -33,11 +50,13 @@ public class ConverterIntegrante implements Converter {
     @Override
     public String getAsString(FacesContext fc, UIComponent uic, Object t) {
        
-        if(t == null) return null;
-        
-        Integrante integrante = (Integrante) t;
-        
-        return integrante.getCpf().getNumero();
+      if (t == null) return null;
+      
+      Integrante integrante = (Integrante) t;
+      
+      return integrante.getCpf().getNumero();
+      
+      
         
     }
 

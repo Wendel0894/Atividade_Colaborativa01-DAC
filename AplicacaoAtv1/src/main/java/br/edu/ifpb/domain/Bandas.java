@@ -14,12 +14,6 @@ public interface Bandas extends Serializable{
     
     public void remover(Banda banda);
     
-    public List<Integrante> listarIntegrantes();
-    
-    public void adicionarIntegrante(int idBanda, int idIntegrante);
-    
-    public void removerIntegrantesBanda(int idBanda);
-    
-    public Banda recuperarBandaPorNomeFantasia(String localDeOrigem);
+    public List<Banda> recuperarBandasPorLocalDeOrigem(String localDeOrigem);
    
 }

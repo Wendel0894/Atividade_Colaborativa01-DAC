@@ -20,8 +20,7 @@ import javax.inject.Named;
 public class ControladorDeBandas implements Serializable {
     
     private Banda banda = new Banda("", "", new ArrayList<>());
-    private Integrante integrante = new Integrante("", LocalDate.of(1, 1, 1), new CPF(""));
-    private String bandaEncontrada = "";
+    private List<Banda> bandasEncontradas = new ArrayList<>();
     private Bandas bandas;
 
     public ControladorDeBandas() throws SQLException {
@@ -30,20 +29,14 @@ public class ControladorDeBandas implements Serializable {
     
     public String buscar() {
         
-        Banda b = this.bandas.recuperarBandaPorNomeFantasia(this.banda.getLocalDeOrigem());
-        
-        if ( b.getNomeFantasia().equals("") ) {
-            this.bandaEncontrada = "Desculpe, mas essa banda não existe !";
-        } else {
-            this.bandaEncontrada = "Id: "  + b.getId() + " LocalDeOrigem: " + b.getLocalDeOrigem() + " Nome Fantasia: " + b.getNomeFantasia() + " Integrantes: " + b.getIntegrantes().get(0).getNome();
-        }
+        this.bandasEncontradas = this.bandas.recuperarBandasPorLocalDeOrigem(this.banda.getLocalDeOrigem());
         
         this.banda = new Banda("", "", new ArrayList<>());
         return "/Banda/search";
         
     }
     
-    public String editar (Banda banda) { //fazer depois da parte de inserir
+    public String editar (Banda banda) { 
         this.banda = banda;
         return "/Banda/edit?faces-redirect=true";
     }
@@ -54,12 +47,20 @@ public class ControladorDeBandas implements Serializable {
     }
     
     
-    public String adicionar() { //arrumar depois, premeira ? 
+    public String adicionar() { 
         
-        this.banda.getIntegrantes().add(this.integrante);
-        this.bandas.inserir(banda);
        
-        this.integrante = new Integrante("", LocalDate.of(1, 1, 1), new CPF(""));
+        if ( this.banda.getId() > 0 ) { //Atualiza
+            
+            this.bandas.atualizar(banda);
+        
+        } else { //Insere
+            
+             this.bandas.inserir(banda);
+            
+        }
+       
+       
         this.banda = new Banda("", "", new ArrayList<>());
         return "/Banda/list?faces-redirect=true";
         
@@ -85,21 +86,15 @@ public class ControladorDeBandas implements Serializable {
         this.bandas = bandas;
     }
 
-    public Integrante getIntegrante() {
-        return integrante;
+    public List<Banda> getBandasEncontradas() {
+        return bandasEncontradas;
     }
 
-    public void setIntegrante(Integrante integrante) {
-        this.integrante = integrante;
+    public void setBandasEncontradas(List<Banda> bandasEncontradas) {
+        this.bandasEncontradas = bandasEncontradas;
     }
 
-    public String getBandaEncontrada() {
-        return bandaEncontrada;
-    }
-
-    public void setBandaEncontrada(String bandaEncontrada) {
-        this.bandaEncontrada = bandaEncontrada;
-    }
+  
  
     
     

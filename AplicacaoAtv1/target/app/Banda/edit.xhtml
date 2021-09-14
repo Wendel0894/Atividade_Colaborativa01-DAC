@@ -11,6 +11,8 @@
         
         <h:form>
             
+            <h1 class="header center orange-text">Inserção ou edição de Bandas: </h1>            
+            
             <h:outputLabel value="Local De Origem: " for="localDeOrigemBanda"/>
             
             <h:inputText id="localDeOrigemBanda" value="#{controladorDeBandas.banda.localDeOrigem}"/>
@@ -18,26 +20,11 @@
             <h:outputLabel value="Nome Fantasia" for="nomeFantasiaBanda" />
             
             <h:inputText id="nomeFantasiaBanda" value="#{controladorDeBandas.banda.nomeFantasia}" />
-            
-            <h:selectOneMenu 
-                class="select-dropdown"
-                value="#{controladorDeBandas.integrante}" 
-                converter="converter.integrante"
-
-            >
-            
-                <f:selectItems 
-                    class="selected"
-                    value="#{controladorDeIntegrantes.listar()}"
-                    var="integrante"
-                    itemLabel="#{integrante.cpf.numero}"
-                />
-            
         
-            </h:selectOneMenu>
-            
             <h:commandButton value="Salvar" action="#{controladorDeBandas.adicionar()}" class="btn" />
             
+            <br />
+            <h:messages />
             
         </h:form>
         
